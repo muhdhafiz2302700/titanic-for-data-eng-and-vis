@@ -25,7 +25,8 @@ dataframe <- data.frame(
 head(dataframe)
 
 # Plot the graph
-ggplot(data=dataframe, aes(x=class, y=count, fill=survived)) +
+# aes = aesthetics
+ggplot(data=dataframe, mapping = aes(x=class, y=count, fill=survived)) +
   # geom_bar looks like it draws the actual bars
   geom_bar(stat="identity", position=position_dodge()) +
   # labs is probably short for labels
@@ -37,4 +38,4 @@ ggplot(data=dataframe, aes(x=class, y=count, fill=survived)) +
   guides(fill=guide_legend(title="Survived")) +
   # Adds the text above each bar
   geom_text(aes(label = count),
-             position = position_dodge(width = 1), hjust = 0, vjust=-0.2)
+             position = position_dodge(width = 0.9), hjust = 0.25, vjust=-0.2)
