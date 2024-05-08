@@ -1,16 +1,40 @@
-library(readr)
+library(tidyverse)
+
 titanic_data <- read.csv("data/people.csv")
 
-library(dplyr)
+# Count the number of survivors and dead folk for each class
+survive_count <- titanic_data %>%
+  group_by(class) %>% 
+  summarise(
+    total = length(survived),
+    survived = sum(survived == TRUE, na.rm = TRUE),
+    #died = sum(survived == FALSE, na.rm = TRUE)
+    died = total - survived
+    )
+print(survive_count)
 
-survivor_counts <- titanic_data %>%
-  group_by(class) %>%
-  summarise(survivors = sum(survived, na.rm = TRUE))
+# Add all that data to a dataframe that will be used for plotting
+dataframe <- data.frame(
+  class = c("1st", "1st", "2nd", "2nd", "3rd", "3rd", "Crew", "Crew"),
+  survived = c(TRUE, FALSE, TRUE, FALSE, TRUE, FALSE, TRUE, FALSE),
+  count = c(survive_count[1,]$survived, survive_count[1,]$died,
+            survive_count[2,]$survived, survive_count[2,]$died,
+            survive_count[3,]$survived, survive_count[3,]$died,
+            survive_count[4,]$survived, survive_count[4,]$died)
+)
+head(dataframe)
 
-library(ggplot2)
-
-ggplot(survivor_counts, aes(x = class, y = survivors, fill = class)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  labs(title = "Survivors by Ticket Class", x = "Ticket Class", y = "Number of Survivors") +
-  theme_minimal() +
-  scale_fill_brewer(palette = "Set1")  # Adds color
+# Plot the graph
+ggplot(data=dataframe, aes(x=class, y=count, fill=survived)) +
+  # geom_bar looks like it draws the actual bars
+  geom_bar(stat="identity", position=position_dodge()) +
+  # labs is probably short for labels
+  labs(
+    x = "Ticket Class",
+    y = "Number of Survivors",
+    title = "Survivors by Ticket Class") + 
+  # Set legend title
+  guides(fill=guide_legend(title="Survived")) +
+  # Adds the text above each bar
+  geom_text(aes(label = count),
+             position = position_dodge(width = 1), hjust = 0, vjust=-0.2)
