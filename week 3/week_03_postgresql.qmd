@@ -1,0 +1,88 @@
+```{r echo=FALSE}
+library(DBI)
+con_titanic = con_titanic <- dbConnect(odbc::odbc(), dsn = "titanic", timeout = 10)
+```
+
+## Example 2: Only show id, fam_name, given_name, and age
+```{sql}
+#| connection: con_titanic
+SELECT id, fam_name, given_name, age
+FROM people
+LIMIT 5;
+```
+
+## Example 3: Total Count
+``` {sql}
+#| connection: con_titanic
+#| eval: true
+#| echo: true
+  
+/* Count the number of rows */
+SELECT COUNT(*)
+FROM people;
+```
+
+## Example 4: Count with age
+``` {sql}
+#| connection: con_titanic
+/* Count the number of non-missing 
+values in a column */
+SELECT COUNT(age)
+FROM people;
+```
+
+## Example 5: Count multiple
+``` {sql}
+#| connection: con_titanic
+
+SELECT 
+    COUNT(age) AS age_count, 
+    COUNT(class) AS class_count, 
+    COUNT(profession) AS pro_count
+FROM people;
+```
+
+## Example 6: Remove duplicate combinations of elements in one or multiple columns
+``` {sql}
+#| connection: con_titanic
+
+/* Remove duplicate combinations of
+elements one or multiple columns */
+SELECT DISTINCT 
+    sex,
+    embarkation_port
+FROM people;
+```
+
+## Example 7: Concatenate columns into one string per row
+```{sql}
+#| connection: con_titanic
+/* Concatenate columns 
+into one string per row */
+
+SELECT DISTINCT CONCAT(sex, '-', embarkation_port)
+FROM people;
+```
+
+```{sql}
+#| connection: con_titanic
+
+DROP VIEW IF EXISTS death_prediction;
+CREATE VIEW death_prediction AS
+SELECT
+    fam_name,
+    given_name,
+    survived,
+    age,
+    CASE class
+        WHEN '1st' THEN 1
+        WHEN '2nd' THEN 2
+        WHEN '3rd' THEN 3
+        WHEN 'Crew' THEN 4
+    END AS numeric_class,
+    CASE sex
+        WHEN 'Female' THEN 0
+        WHEN 'Male' THEN 1
+    END AS numeric_sex
+FROM people;
+```

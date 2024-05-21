@@ -1,0 +1,74 @@
+---
+title: Week 03 Lab Learning Notes -- "PostgreSQL" Queries for joining tables
+author: me
+date: 2024-05-21
+date-format: "dddd MMM D, YYYY"
+
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-location: left
+    number_sections: true
+    number_depth: 3
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(DBI)
+library(knitr)
+con_investments = con_investments <- dbConnect(odbc::odbc(), dsn = "investments", timeout = 10)
+```
+
+## Inner Join for one to one relationships
+- If any key that appears in one table is equal to at most one key in the other table
+- Each shareholder name in the shareholders corresponds to one company name in the traded companies table
+- Only two companies appear in both tables so only two entries are created
+- Joining company name
+```{sql}
+#| connection: con_investments
+#| echo: FALSE
+
+SELECT
+    sh.sh_holder_id,
+    sh.sh_holder_name,
+    tc.comp_id
+FROM shareholders AS sh
+INNER JOIN traded_companies AS tc
+    ON sh.sh_holder_name = tc.comp_name
+ORDER BY sh.sh_holder_id;
+```
+## Inner Join for one to many relationships
+- A one-to-many relationship between two tables x and y exists if keys in x match more than one key in y, but every key in y can match only up to one key in x
+- Joining by company id.
+```{sql}
+#| connection: con_investments
+#| echo: FALSE
+
+SELECT
+    tc.comp_name,
+    tc.comp_id,
+    pr.prod_name
+FROM traded_companies AS tc
+INNER JOIN products AS pr
+    ON tc.comp_id = pr.comp_id
+ORDER BY tc.comp_id;
+```
+
+## Inner Join for many to many relationships
+- In a many-to-many relationship, at least one key in each table matches more than one key in the other table
+- Joining by country.
+```{sql}
+#| connection: con_investments
+#| echo: FALSE
+
+SELECT
+    sh.sh_holder_name,
+    sh.country,
+    tc.comp_name
+FROM shareholders AS sh
+INNER JOIN traded_companies AS tc
+    ON sh.country = tc.country
+ORDER BY sh.sh_holder_id, tc.comp_id;
+```

@@ -1,0 +1,117 @@
+---
+title: QMD Version of the *Titanic*
+author: Your Name
+
+format: 
+  revealjs:
+    embed-resources: true
+    scrollable: true
+    width: 1600
+    height: 900
+---
+
+## What is the Titanic? {.smaller}
+RMS Titanic was a British ocean liner that sank on 15 April 1912 after striking an iceberg on the ship's maiden voyage from Southampton, England to New York City, United States. Of the estimated 2,224 passengers and crew aboard, approximately 1,500 died, making the incident the deadliest sinking of a single ship at the time.\
+Titanic, operated by the White [Star Line](https://en.wikipedia.org/wiki/White_Star_Line){target="_blank"}, carried some of the wealthiest people in the world, as well as hundreds of emigrants from the British Isles, Scandinavia, and elsewhere in Europe who were seeking a new life in the United States and Canada. \
+The disaster drew public attention, spurred major changes in maritime safety regulations, and inspired a lasting legacy in popular culture. \
+Source: [Wikipedia](https://en.wikipedia.org/wiki/Titanic){target="_blank"}
+
+![Image of the Titanic](imgs/1469px-RMS_Titanic_3.jpg){target="_blank"}
+
+## FAQ
+Why is the Titanic famous?\
+The Titanic is famous for many reasons, these include:\
+
+1.  She was the largest ship in the world.
+
+2.  She sank on her maiden voyage.
+
+3.  Her captain received many warnings of ice on the route but did not reduce speed.
+
+4.  There were not enough lifeboats for all the people on board.
+
+5.  Many crew and paying passengers lost their lives but the man that effectively owned the Titanic somehow survived.
+
+6.  With millionaires as well as people in dire poverty there was a diverse mix of passengers and crew and we have been left many fascinating stories of their lives.
+
+Source: [Encyclopedia Titanica](https://www.encyclopedia-titanica.org/titanic/){target="_blank"}
+
+## Dimensions of the Titanic
+
+:::: {.columns}
+
+::: {.column width="40%"}
+- Length: 269.1 m
+
+- Beam: 28.2 m
+
+- Height: 53.3 m
+
+- Beam:   28.2 m
+
+- Height: 53.3 m
+
+- Draught: 10.5 m
+
+- Depth: 19.7 m
+:::
+
+::: {.column width="40%"}
+![Comparison of Titanic with a plane](imgs/compare_titanic_with_plane.jpg)
+:::
+
+::::
+
+## Survival Rate
+
+According to [Encyclopedia Titanica](https://www.encyclopedia-titanica.org/){target="_blank"}, the survival rate of the passengers was as follows:
+
+| Class | Total | Survived | Percentage |
+| ----- | ----- | -------- | ---------- |
+| 1-st class | 324 | 201 | 62.04% |
+| 2-nd class | 284 | 118 | 41.55% |
+| 3-rd class | 709 | 181 | 25.53% |
+| Crew | 891 | 212 | 23.79% |
+
+: Some random title {#tab-1 .striped .hover}
+
+## Was Survival Dependent on Class?
+
+>I can never understand why God would have spared a poor Finnish girl when all those rich people drowned.
+
+Anna Sofia Turja(https://www.encyclopedia-titanica.org/titanic-survivor/anna-sofia-turja.html (3rd-class passenger)
+
+This quote raises the question: Were 1^st^-lass passengers more likely to survive than 3^rd^-class passengers? The data suggests that they were. The survival rate of 1^st^-class passengers was 62.04%, while the survival rate of 3^rd^-class passengers was only 25.53%. Crew members were even less likely to survive than 3^rd^-class passengers. The reason for this is that the crew members were responsible for ensuring the safety of the passengers and were therefore less likely to be able to save themselves in the event of an emergency. For passengers, the more luxurious the class, the more likely they were to survive, and the reason for this is that the 1^st^-class cabins were located closer to the lifeboats, making it easier for 1^st^-class passengers to reach them in time.
+
+
+imgs/anna-turja_P1.jpg
+
+
+Photo taken before the Titanic. Image from Encyclopedia Titanica: https://www.encyclopedia-titanica.org/titanic-survivor/anna-sofia-turja.html)
+
+(imgs/anna-turja_P1.jpg)
+
+
+Data source: [Encyclopedia Titanica](https://www.encyclopedia-titanica.org/)
+
+
+## Summary
+
+-   The Titanic was one of the largest ships of its time.
+
+-   She sank during its maiden voyage.
+
+-   The more luxurious the class of the passengers, the more likely they were to survive.
+
+-   Crew members were even less likely to survive than 3rd-class passengers.
+
+
+
+
+
+
+
+
+
+
+
